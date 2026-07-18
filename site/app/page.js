@@ -71,37 +71,136 @@ const education = [
   { degree: "B.Sc. (Physics)", school: "New College, Chennai", date: "July 2013" },
 ];
 
-const chipLeads = [
-  { x1: 40, y1: 70, x2: 10, y2: 70 },
-  { x1: 40, y1: 100, x2: 4, y2: 100 },
-  { x1: 40, y1: 130, x2: 10, y2: 130 },
-  { x1: 160, y1: 70, x2: 190, y2: 70 },
-  { x1: 160, y1: 100, x2: 196, y2: 100 },
-  { x1: 160, y1: 130, x2: 190, y2: 130 },
-  { x1: 70, y1: 40, x2: 70, y2: 10 },
-  { x1: 130, y1: 40, x2: 130, y2: 10 },
-  { x1: 70, y1: 160, x2: 70, y2: 190 },
-  { x1: 130, y1: 160, x2: 130, y2: 190 },
+const cardNumberGroups = [
+  { x: 34, digits: "1234" },
+  { x: 74, digits: "5678" },
+  { x: 114, digits: "9012" },
+  { x: 154, digits: "3456" },
 ];
 
-function ChipDecor() {
+function CardDecor() {
   return (
-    <svg className="chip-decor" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect className="chip-ring" x="40" y="40" width="120" height="120" rx="14" stroke="#2dd4a7" strokeWidth="1.2" />
-      <rect className="chip-core" x="62" y="62" width="76" height="76" rx="8" stroke="#2dd4a7" strokeWidth="1.2" />
-      {chipLeads.map((l, i) => (
-        <line
-          key={i}
-          className="chip-lead"
-          x1={l.x1}
-          y1={l.y1}
-          x2={l.x2}
-          y2={l.y2}
-          stroke="#2dd4a7"
-          strokeWidth="1.2"
-          style={{ animationDelay: `${(i % 5) * 0.22}s` }}
-        />
+    <div className="chip-decor card-flip" aria-hidden="true">
+      <div className="card-flip-inner">
+        <svg className="card-face card-face-front" viewBox="0 0 300 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect className="chip-ring" x="10" y="10" width="280" height="170" rx="16" stroke="#2dd4a7" strokeWidth="1.2" />
+          <rect className="chip-core" x="34" y="34" width="54" height="42" rx="6" stroke="#2dd4a7" strokeWidth="1.2" />
+          <line className="chip-core" x1="61" y1="34" x2="61" y2="76" stroke="#2dd4a7" strokeWidth="1" />
+          <line className="chip-core" x1="34" y1="55" x2="88" y2="55" stroke="#2dd4a7" strokeWidth="1" />
+          <circle cx="238" cy="42" r="16" stroke="#2dd4a7" strokeOpacity="0.4" strokeWidth="1.2" />
+          <circle cx="256" cy="42" r="16" stroke="#2dd4a7" strokeOpacity="0.4" strokeWidth="1.2" />
+          <g className="chip-core" transform="translate(150,30) rotate(45)">
+            <path d="M -3 9 A 5 5 0 0 1 3 9" stroke="#2dd4a7" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+            <path d="M -7.5 13.5 A 10.6 10.6 0 0 1 7.5 13.5" stroke="#2dd4a7" strokeWidth="1.3" strokeLinecap="round" fill="none" strokeOpacity="0.65" />
+            <path d="M -12 18 A 17 17 0 0 1 12 18" stroke="#2dd4a7" strokeWidth="1.3" strokeLinecap="round" fill="none" strokeOpacity="0.4" />
+          </g>
+          {cardNumberGroups.map((g, i) => (
+            <text
+              key={g.x}
+              className="chip-core"
+              x={g.x}
+              y="150"
+              fontSize="13"
+              fontWeight="600"
+              letterSpacing="1.5"
+              fontFamily="ui-monospace, monospace"
+              fill="#2dd4a7"
+              style={{ animationDelay: `${i * 0.25}s` }}
+            >
+              {g.digits}
+            </text>
+          ))}
+          <text x="34" y="166" fontSize="6" letterSpacing="0.5" fontFamily="ui-monospace, monospace" fill="#2dd4a7" fillOpacity="0.6">VALID THRU</text>
+          <text x="34" y="177" fontSize="11" fontWeight="600" letterSpacing="1" fontFamily="ui-monospace, monospace" fill="#2dd4a7">12/99</text>
+          <text x="266" y="166" textAnchor="end" fontSize="6" letterSpacing="0.5" fontFamily="ui-monospace, monospace" fill="#2dd4a7" fillOpacity="0.6">CARD HOLDER</text>
+          <text x="266" y="177" textAnchor="end" fontSize="10" fontWeight="600" letterSpacing="1" fontFamily="ui-monospace, monospace" fill="#2dd4a7">MUZAMIL IDROOS</text>
+        </svg>
+
+        <svg className="card-face card-face-back" viewBox="0 0 300 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect className="chip-ring" x="10" y="10" width="280" height="170" rx="16" stroke="#2dd4a7" strokeWidth="1.2" />
+          <rect x="10" y="28" width="280" height="30" fill="#111417" />
+          <rect x="24" y="72" width="200" height="20" rx="2" fill="#e8e5da" />
+          <text x="32" y="85" fontSize="7" fontStyle="italic" fontFamily="Georgia, serif" fill="#555">Authorized Signature</text>
+          <rect x="188" y="72" width="36" height="20" rx="2" fill="#f2f9f7" stroke="#333" strokeWidth="0.6" />
+          <text x="206" y="86" textAnchor="middle" fontSize="9" fontStyle="italic" fontWeight="700" fontFamily="Georgia, serif" fill="#1a1a1a">482</text>
+          <text x="24" y="105" fontSize="5.5" letterSpacing="0.4" fontFamily="ui-monospace, monospace" fill="#2dd4a7" fillOpacity="0.6">CVV</text>
+          <circle cx="248" cy="140" r="12" stroke="#2dd4a7" strokeOpacity="0.35" strokeWidth="1" />
+          <circle cx="262" cy="140" r="12" stroke="#2dd4a7" strokeOpacity="0.35" strokeWidth="1" />
+          <text x="24" y="160" fontSize="5.5" letterSpacing="0.3" fontFamily="ui-monospace, monospace" fill="#2dd4a7" fillOpacity="0.5">
+            THIS CARD IS PROPERTY OF THE ISSUING BANK
+          </text>
+          <text x="24" y="171" fontSize="5.5" letterSpacing="0.3" fontFamily="ui-monospace, monospace" fill="#2dd4a7" fillOpacity="0.5">
+            IF FOUND, PLEASE RETURN TO NEAREST BRANCH
+          </text>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+const posKeypadKeys = [
+  { x: 62, y: 95, label: "1" },
+  { x: 88, y: 95, label: "2" },
+  { x: 114, y: 95, label: "3", pressOrder: 4 },
+  { x: 62, y: 108, label: "4" },
+  { x: 88, y: 108, label: "5" },
+  { x: 114, y: 108, label: "6" },
+  { x: 62, y: 121, label: "7", pressOrder: 2 },
+  { x: 88, y: 121, label: "8" },
+  { x: 114, y: 121, label: "9", pressOrder: 3 },
+  { x: 62, y: 134, label: "*" },
+  { x: 88, y: 134, label: "0", pressOrder: 1 },
+  { x: 114, y: 134, label: "#" },
+];
+
+function PosTxnDecor() {
+  return (
+    <svg className="pos-txn-decor" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect className="chip-ring" x="50" y="30" width="100" height="140" rx="10" stroke="#2dd4a7" strokeWidth="1.2" />
+      <rect className="chip-core" x="62" y="44" width="76" height="46" rx="4" fill="#2dd4a7" fillOpacity="0.06" stroke="#2dd4a7" strokeWidth="1.2" />
+      {posKeypadKeys.map((k) => (
+        <g key={`${k.x}-${k.y}`}>
+          <rect
+            className={k.pressOrder ? `key-press key-press-${k.pressOrder}` : undefined}
+            x={k.x}
+            y={k.y}
+            width="22"
+            height="13"
+            rx="2"
+            fill="#2dd4a7"
+            fillOpacity="0"
+            stroke="#2dd4a7"
+            strokeOpacity="0.45"
+            strokeWidth="0.8"
+          />
+          <text x={k.x + 11} y={k.y + 9.5} textAnchor="middle" fontSize="6.5" fontFamily="ui-monospace, monospace" fill="#2dd4a7" fillOpacity="0.75">
+            {k.label}
+          </text>
+        </g>
       ))}
+      <rect x="76" y="150" width="48" height="6" rx="3" stroke="#2dd4a7" strokeOpacity="0.6" strokeWidth="1" />
+
+      <g className="pos-step pos-step-1">
+        <text x="100" y="58" textAnchor="middle" fontSize="6" letterSpacing="1" fontFamily="ui-monospace, monospace" fill="#2dd4a7">AMOUNT DUE</text>
+        <text x="100" y="76" textAnchor="middle" fontSize="13" fontWeight="700" fontFamily="ui-monospace, monospace" fill="#2dd4a7">$10.00</text>
+      </g>
+      <g className="pos-step pos-step-2">
+        <text x="100" y="58" textAnchor="middle" fontSize="6" letterSpacing="1" fontFamily="ui-monospace, monospace" fill="#2dd4a7">ENTER PIN</text>
+        <text x="100" y="77" textAnchor="middle" fontSize="13" fontWeight="700" letterSpacing="4" fontFamily="ui-monospace, monospace" fill="#2dd4a7">****</text>
+      </g>
+      <g className="pos-step pos-step-3">
+        <circle cx="76" cy="68" r="7" stroke="#34d399" strokeWidth="1.6" fill="none" />
+        <path d="M72.5 68 L75 70.5 L80 64.5" stroke="#34d399" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="112" y="71" textAnchor="middle" fontSize="9.5" fontWeight="700" fontFamily="ui-monospace, monospace" fill="#34d399">APPROVED</text>
+      </g>
+
+      <line x1="70" y1="30" x2="130" y2="30" stroke="#2dd4a7" strokeOpacity="0.5" strokeWidth="1" />
+      <g className="pos-receipt">
+        <rect x="80" y="4" width="40" height="26" fill="#f2f9f7" />
+        <line x1="86" y1="11" x2="114" y2="11" stroke="#0b2545" strokeOpacity="0.4" strokeWidth="1" />
+        <line x1="86" y1="17" x2="114" y2="17" stroke="#0b2545" strokeOpacity="0.4" strokeWidth="1" />
+        <line x1="86" y1="23" x2="106" y2="23" stroke="#0b2545" strokeOpacity="0.4" strokeWidth="1" />
+      </g>
     </svg>
   );
 }
@@ -119,7 +218,8 @@ export default function Home() {
       </div>
 
       <header className="hero">
-        <ChipDecor />
+        <CardDecor />
+        <PosTxnDecor />
         <div className="wrap">
           <div className="hero-grid">
             <div className="hero-main">
