@@ -138,6 +138,8 @@ export default function Home() {
               <div className="hero-contact">
                 <a href="tel:+919042900550">+91&nbsp;9042900550</a>
                 <span className="sep">/</span>
+                <a href="https://linkedin.com/in/muzamilidroos" target="_blank" rel="noopener noreferrer">linkedin.com/in/muzamilidroos</a>
+                <span className="sep">/</span>
                 <span>Chennai, India</span>
               </div>
             </div>
@@ -286,6 +288,7 @@ export default function Home() {
       <footer className="footer">
         <div className="wrap">
           <span>© {new Date().getFullYear()} Muzamil Idroos</span>
+          <a href="https://linkedin.com/in/muzamilidroos" target="_blank" rel="noopener noreferrer">linkedin.com/in/muzamilidroos</a>
         </div>
       </footer>
     </main>
