@@ -138,8 +138,6 @@ export default function Home() {
               <div className="hero-contact">
                 <a href="tel:+919042900550">+91&nbsp;9042900550</a>
                 <span className="sep">/</span>
-                <a href="mailto:muzamilidroos@gmail.com">muzamilidroos@gmail.com</a>
-                <span className="sep">/</span>
                 <span>Chennai, India</span>
               </div>
             </div>
@@ -288,7 +286,6 @@ export default function Home() {
       <footer className="footer">
         <div className="wrap">
           <span>© {new Date().getFullYear()} Muzamil Idroos</span>
-          <a href="mailto:muzamilidroos@gmail.com">muzamilidroos@gmail.com</a>
         </div>
       </footer>
     </main>
